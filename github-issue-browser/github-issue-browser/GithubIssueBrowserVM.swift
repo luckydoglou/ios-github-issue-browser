@@ -20,7 +20,6 @@ class GithubIssueBrowserVM: ObservableObject {
         fetchData()
     }
     
-    
     func fetchData() {
         let url = URL(string: "https://api.github.com/repos/walmartlabs/thorax/issues")!
         

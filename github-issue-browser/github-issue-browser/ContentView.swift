@@ -45,16 +45,21 @@ struct CardView: View {
     var issue: IssueTemplate
     
     var body: some View {
-        
-        VStack {
+            
+        VStack(alignment: .leading) {
             Text(issue.title!)
+                .font(.headline)
             HStack {
                 Text("#\(issue.number!)")
+                    .padding(.horizontal)
                 Text(issue.state!)
-                Text(issue.created_at!)
+                Spacer()
             }
+            .foregroundColor(.gray)
         }
+
     }
+    
     
 }
 
