@@ -3,7 +3,7 @@
 Fetch JSON data through HTTP call, and populate the data
 
 # Demo
-![Demo](demo.mov)
+![Demo](demo.gif)
 
 # License
 
