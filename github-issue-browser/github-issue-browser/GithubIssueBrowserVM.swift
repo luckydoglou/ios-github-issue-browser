@@ -18,8 +18,6 @@ class GithubIssueBrowserVM: ObservableObject {
     
     init() {
         fetchData()
-//        fetchComments()
-        print(issues.count)
     }
     
     
@@ -34,7 +32,6 @@ class GithubIssueBrowserVM: ObservableObject {
             if let response = response as? HTTPURLResponse {
                 print("Response HTTP status code: \(response.statusCode)")
             }
-            
             DispatchQueue.main.async {
                 if let data = data {
                     let i = try? JSONDecoder().decode([IssueTemplate].self, from: data)
@@ -43,12 +40,11 @@ class GithubIssueBrowserVM: ObservableObject {
             }
         }.resume()
     }
-    
+  
     func fetchComments(urlString: String) {
         comments = []
-        
         let url = URL(string: urlString)!
-        
+
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 print("Error took place \(error)")
@@ -57,19 +53,13 @@ class GithubIssueBrowserVM: ObservableObject {
             if let response = response as? HTTPURLResponse {
                 print("Response HTTP status code: \(response.statusCode)")
             }
-            
             DispatchQueue.main.async {
                 if let data = data {
                     let i = try? JSONDecoder().decode([CommentTemplate].self, from: data)
-                    //                print(type(of: issues))
-                    //                return issuesOptional
-                    //                print(i!.count)
                     self.comments = i!
-                    //                print(self.issues)
                 }
             }
         }.resume()
-        
     }
     
 }

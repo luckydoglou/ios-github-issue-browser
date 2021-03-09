@@ -16,12 +16,13 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(githubIssueBroswerVM.issues) { issue in
-                    NavigationLink(destination: DetailView(githubIssueBrowserVM: githubIssueBroswerVM, issue: issue)) {
+                    NavigationLink(
+                        destination: DetailView(githubIssueBrowserVM: githubIssueBroswerVM, issue: issue)
+                            .onAppear{
+                                githubIssueBroswerVM.fetchComments(urlString: issue.comments_url!)
+                    }) {
                         CardView(issue: issue)
                     }
-                    .simultaneousGesture(TapGesture().onEnded {
-                        print("hello")
-                    })
                 }
             }.navigationTitle(Text("Issue Tracker"))
         }
