@@ -37,8 +37,6 @@ struct ContentView: View {
 //        }, label: { Text("click me") })
         
     }
-    
-    
 }
 
 struct CardView: View {
@@ -59,7 +57,6 @@ struct CardView: View {
         }
 
     }
-    
     
 }
 
